@@ -6,71 +6,63 @@
 <title>캐노피 추진 과정 점검</title>
 <style>
 :root{
-  --bg:#f6f7f9; --card:#ffffff; --text:#1d2129; --muted:#5b6472; --line:#e3e6eb;
-  --accent:#0f6e6e; --accent-soft:#e3f2f1; --gov:#2453a6; --gov-soft:#e8eefa;
-  --notice:#8a5a00; --notice-soft:#fbf1dd; --warn:#b3261e; --warn-soft:#fbe9e7;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121417; --card:#1b1e23; --text:#e7e9ed; --muted:#a3abb8; --line:#2c3139;
-    --accent:#5cc2bf; --accent-soft:#16302f; --gov:#8fb0f0; --gov-soft:#1a2539;
-    --notice:#e5b964; --notice-soft:#2e2615; --warn:#f08a80; --warn-soft:#331b19;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#121417; --card:#1b1e23; --text:#e7e9ed; --muted:#a3abb8; --line:#2c3139;
-  --accent:#5cc2bf; --accent-soft:#16302f; --gov:#8fb0f0; --gov-soft:#1a2539;
-  --notice:#e5b964; --notice-soft:#2e2615; --warn:#f08a80; --warn-soft:#331b19;
+  --ink:#12151b;--paper:#f4f1e9;--panel:#fffefa;--line:#c9c4b8;
+  --red:#d43b2f;--blue:#174b8c;--blue-pale:#e8f0fa;--yellow:#ffd84d;
+  --green:#087864;--green-pale:#e5f4ef;--muted:#68655e;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
-  line-height:1.65;font-size:16px;word-break:keep-all}
-.wrap{max-width:760px;margin:0 auto;padding:28px 16px 48px}
-header h1{font-size:1.6rem;line-height:1.35;margin:0 0 6px}
-header p{margin:0;color:var(--muted)}
-.lead{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:20px 0}
-.lead strong{color:var(--accent)}
-.result{background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:10px;padding:16px 18px;margin:0 0 28px}
-.result h2{font-size:1.1rem;margin:0 0 6px}
-.result p{margin:0 0 6px}
-.issue{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin:0 0 18px}
-.issue h2{font-size:1.15rem;margin:0 0 4px;line-height:1.4}
-.issue h2 .no{display:inline-block;min-width:1.8em;color:var(--accent)}
-.issue .sum{color:var(--muted);margin:0 0 12px}
-.ev{border-radius:8px;padding:10px 12px;margin:8px 0}
-.ev .tag{display:inline-block;font-size:.78rem;font-weight:700;padding:1px 8px;border-radius:999px;margin-bottom:4px}
-.ev.gov{background:var(--gov-soft)} .ev.gov .tag{background:var(--gov);color:var(--card)}
-.ev.notice{background:var(--notice-soft)} .ev.notice .tag{background:var(--notice);color:var(--card)}
-.ev ul{margin:4px 0 0;padding-left:1.1em}
-.ev li{margin:3px 0}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;line-height:1.72;font-size:16px;word-break:keep-all}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(18,21,27,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(18,21,27,.035) 1px,transparent 1px);background-size:24px 24px}
+.wrap{position:relative;max-width:1040px;margin:0 auto;padding:40px 24px 72px}
+header{position:relative;overflow:hidden;background:var(--ink);color:#fff;padding:58px 56px 52px;border-top:10px solid var(--red);box-shadow:14px 14px 0 rgba(18,21,27,.14)}
+header::before{content:"PROCESS REVIEW / 2026";display:block;margin-bottom:42px;color:var(--yellow);font:700 .78rem/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em}
+header::after{content:"";position:absolute;right:-70px;bottom:-105px;width:300px;height:300px;border:48px solid rgba(255,216,77,.12);border-radius:50%}
+header h1{position:relative;z-index:1;max-width:790px;font-family:Georgia,"Noto Serif KR",serif;font-size:clamp(2.3rem,5.7vw,4.8rem);font-weight:800;line-height:1.08;letter-spacing:-.045em;margin:0 0 24px}
+header p{position:relative;z-index:1;margin:0;color:#c7cbd3;font-size:1rem;letter-spacing:.02em}
+.lead{max-width:850px;margin:48px auto 28px;padding:0 0 0 28px;border-left:6px solid var(--red);font-size:1.18rem;line-height:1.8}
+.lead strong{background:linear-gradient(transparent 62%,rgba(255,216,77,.7) 62%);font-weight:800}
+.result{position:relative;background:var(--yellow);padding:32px 38px;margin:34px 0 58px;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
+.result::before{content:"결론";position:absolute;right:24px;top:-15px;background:var(--red);color:#fff;padding:5px 12px;font:800 .78rem/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em}
+.result h2{font-family:Georgia,"Noto Serif KR",serif;font-size:clamp(1.45rem,3vw,2.15rem);line-height:1.35;margin:0 0 14px}
+.result p{margin:0 0 10px}
+.src{color:var(--muted);font-size:.86rem;white-space:normal}
+.result .src{color:#514818;font-weight:700}
+.ba{background:var(--ink);color:#fff;padding:40px;margin:0 0 64px}
+.ba h2{font-family:Georgia,"Noto Serif KR",serif;font-size:clamp(1.4rem,3vw,2.1rem);margin:0 0 28px;padding-bottom:16px;border-bottom:1px solid #414650}
+.ba-row{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;padding:20px 0;border-bottom:1px solid #343942}
+.ba-row .b,.ba-row .a{display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:start;margin:0}
+.ba-row .lbl{font-size:.76rem;font-weight:800;line-height:1.2;padding:6px 7px;text-align:center;letter-spacing:.04em}
+.ba-row .b .lbl{background:var(--red);color:#fff}
+.ba-row .a .lbl{background:var(--green);color:#fff}
+.ba-row>.src{grid-column:1/-1;margin:10px 0 0 82px;color:#9fa5af}
+.ba .close{margin:28px 0 0;padding:22px 24px;background:#242933;border-left:5px solid var(--yellow);color:#f3f1eb;font-weight:650}
+.issue{position:relative;background:var(--panel);border-top:5px solid var(--ink);border-bottom:1px solid var(--line);padding:40px 42px 42px;margin:0 0 36px;box-shadow:0 10px 28px rgba(30,30,25,.07)}
+.issue h2{display:flex;gap:18px;align-items:flex-start;font-family:Georgia,"Noto Serif KR",serif;font-size:clamp(1.35rem,3vw,2rem);line-height:1.35;letter-spacing:-.025em;margin:0 0 12px}
+.issue h2 .no{flex:0 0 46px;display:grid;place-items:center;width:46px;height:46px;background:var(--red);color:#fff;font:800 1rem/1 ui-monospace,SFMono-Regular,Consolas,monospace;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.issue .sum{margin:0 0 24px;padding:14px 0 14px 64px;border-bottom:1px solid var(--line);color:var(--muted);font-weight:600}
+.ev{position:relative;padding:22px 24px 20px;margin:14px 0;border:1px solid var(--line)}
+.ev .tag{display:inline-block;margin:0 0 9px;padding:5px 10px;color:#fff;font-size:.78rem;font-weight:800;line-height:1.2;letter-spacing:.06em}
+.ev.gov{background:var(--blue-pale);border-color:#a9bfdc}.ev.gov .tag{background:var(--blue)}
+.ev.notice{background:#fff6dc;border-color:#d8c485}.ev.notice .tag{background:#8a6100}
+.ev ul{margin:5px 0 0;padding-left:1.25em}.ev li{margin:7px 0}
 q{quotes:"“" "”" "‘" "’"}
-.src{color:var(--muted);font-size:.88rem;white-space:nowrap}
-.point{margin:10px 0 0;padding:10px 12px;border-radius:8px;background:var(--warn-soft);color:var(--text)}
-.point b{color:var(--warn)}
-.ba{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin:0 0 28px}
-.ba h2{font-size:1.1rem;margin:0 0 10px}
-.ba-row{border-top:1px solid var(--line);padding:10px 0}
-.ba-row:first-of-type{border-top:none;padding-top:0}
-.ba-row .b,.ba-row .a{display:flex;gap:8px;align-items:flex-start;margin:2px 0}
-.ba-row .lbl{flex:none;font-size:.78rem;font-weight:700;padding:1px 8px;border-radius:999px;margin-top:3px}
-.ba-row .b .lbl{background:var(--warn-soft);color:var(--warn)}
-.ba-row .a .lbl{background:var(--accent-soft);color:var(--accent)}
-.ba-row .src{display:block;margin-top:2px}
-.ba .close{margin:12px 0 0;padding:10px 12px;border-radius:8px;background:var(--accent-soft)}
-.appx{margin-top:32px}
-.appx>h2{font-size:1.2rem;margin:0 0 6px}
-.appx>p{color:var(--muted);margin:0 0 14px}
-.ac{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:0 0 18px;scroll-margin-top:12px}
-.ac h3{font-size:1.02rem;margin:0 0 6px;line-height:1.45}
-.ac h3 .d{color:var(--gov);margin-right:6px}
-.ac p{margin:0 0 10px}
-.ac .nt{font-size:.92rem;color:var(--muted)}
-.ac img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:#fff}
-a.src{color:var(--gov);text-decoration:underline;text-underline-offset:2px}
-footer{margin-top:28px;color:var(--muted);font-size:.92rem}
-footer ul{padding-left:1.1em}
-@media (max-width:480px){header h1{font-size:1.35rem}.issue{padding:14px}}
+a.src{color:var(--blue);font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.point{margin:18px 0 0;padding:18px 20px;background:#fbe8e5;border:0;border-left:6px solid var(--red)}
+.point b{display:inline-block;margin-right:5px;color:var(--red)}
+.appx{margin-top:76px;padding-top:38px;border-top:10px solid var(--ink)}
+.appx>h2{font-family:Georgia,"Noto Serif KR",serif;font-size:clamp(1.6rem,3.4vw,2.45rem);margin:0 0 8px}
+.appx>p{max-width:760px;color:var(--muted);margin:0 0 28px}
+.ac{background:#fff;border:1px solid var(--line);padding:28px;margin:0 0 28px;scroll-margin-top:18px;box-shadow:6px 6px 0 #d8d3c8}
+.ac h3{font-family:Georgia,"Noto Serif KR",serif;font-size:1.2rem;line-height:1.45;margin:0 0 10px}
+.ac h3 .d{display:inline-block;margin-right:9px;color:#fff;background:var(--blue);padding:3px 8px;font:800 .8rem/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;vertical-align:2px}
+.ac p{margin:0 0 16px}.ac .nt{font-size:.92rem;color:var(--muted)}
+.ac img{display:block;width:100%;height:auto;background:#fff;border:10px solid #20242b;box-shadow:0 0 0 1px #20242b}
+footer{margin-top:60px;padding:26px 28px;background:var(--ink);color:#c8cbd1;font-size:.92rem;border-bottom:8px solid var(--red)}
+footer p{margin-top:0;color:#fff;font-weight:750}footer ul{margin-bottom:0;padding-left:1.2em}
+@media (min-width:860px){.issue .ev{width:calc(50% - 8px);display:inline-block;vertical-align:top}.issue .ev.gov{margin-right:12px}.issue .point{clear:both}}
+@media (max-width:700px){.wrap{padding:18px 14px 42px}header{padding:36px 24px 34px;box-shadow:6px 6px 0 rgba(18,21,27,.16)}header::before{margin-bottom:28px}.lead{margin-top:34px;font-size:1.06rem}.result{padding:26px 22px;margin-bottom:44px;box-shadow:5px 5px 0 var(--ink)}.ba{padding:28px 20px}.ba-row{grid-template-columns:1fr;gap:12px}.ba-row>.src{margin-left:0}.issue{padding:28px 20px 30px}.issue h2{gap:12px}.issue h2 .no{flex-basis:38px;width:38px;height:38px}.issue .sum{padding-left:0}.ev{padding:18px 16px}.ac{padding:18px}.ac img{border-width:5px}}
+@media print{body::before{display:none}.wrap{max-width:none;padding:0}header,.ba,footer{print-color-adjust:exact;-webkit-print-color-adjust:exact}.issue,.ac{break-inside:avoid;box-shadow:none}}
 </style>
 </head>
 <body>
